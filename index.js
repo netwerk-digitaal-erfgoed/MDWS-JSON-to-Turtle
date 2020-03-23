@@ -50,7 +50,7 @@ for (const item of json) {
     if (veld=="na") continue; //since item.na is already present as rdfs:label
     if (veld=="aet") continue; //since item.aet is already present as rdf:type soort:...
     if (veld=="GUID") continue; //since item.GUID is already present as part of the URI
-    writer.addQuad(subject, namedNode('v:'+veld.replace(" ","_")), literal(item[veld]));
+    writer.addQuad(subject, namedNode('v:'+veld.replace(/ /g,"_")), literal(item[veld]));
   }  
 }
 
