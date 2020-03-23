@@ -37,20 +37,21 @@ const writer = new N3.Writer({ prefixes: {
 }});
 
 for (const item of json) {
-  const soort = item.recordType=="%0" ? "abk" : item.recordType;
-  const label = item.na;
-  const bj = item.bj;
-  const ej = item.ej;
   const code = item["%0"] ? item["%0"] : "";
   const parent = itemsById[item.ahd_id];
 
-  const sub = namedNode(`aio:${item.GUID}`);
-  writer.addQuad(sub, namedNode('rdf:type'), namedNode(`soort:${soort}`));
-  writer.addQuad(sub, namedNode('rdfs:label'), literal(label));
-  if (bj) writer.addQuad(sub, namedNode('v:beginjaar'), literal(bj));
-  if (ej) writer.addQuad(sub, namedNode('v:eindjaar'), literal(ej));
-  if (code) writer.addQuad(sub, namedNode('v:code'), literal(code));
-  if (parent && parent.GUID) writer.addQuad(sub, namedNode('v:parent'), namedNode(`aio:${parent.GUID}`));
+  const subject = namedNode(`aio:${item.GUID}`);
+  writer.addQuad(subject, namedNode('rdf:type'), namedNode(`soort:${item.aet}`));
+  writer.addQuad(subject, namedNode('rdfs:label'), literal(item.na));
+  if (parent && parent.GUID) writer.addQuad(subject, namedNode('v:parent'), namedNode(`aio:${parent.GUID}`));
+
+  for (const veld in item) {
+    if (!item[veld]) continue; //value undefined or empty
+    if (veld=="na") continue; //since item.na is already present as rdfs:label
+    if (veld=="aet") continue; //since item.aet is already present as rdf:type soort:...
+    if (veld=="GUID") continue; //since item.GUID is already present as part of the URI
+    writer.addQuad(subject, namedNode('v:'+veld.replace(" ","_")), literal(item[veld]));
+  }  
 }
 
 writer.end((error, result) => console.log(result));
