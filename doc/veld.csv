@@ -1,67 +1,66 @@
-"Achternaam",
-"ahd_id","Parent ID in MF"
-"Auteur",
-"Beroep",
-"Beschrijving",
-"bj","Beginjaar"
-"bn","Bestandsnaam"
-"CATTWD","Trefwoord"
-"code",
-"CXTWD_PLAATSNAAM","Contexttoegang Trefwoord Plaatsnaam"
-"CXTWD_STRAATNAAM","Contexttoegang Trefwoord Straatnaam"
-"CXTWD_VERVAARDIGER","Contexttoegang Trefwoord Vervaardiger"
-"Datering",
-"Datering_toegang",
-"Datum_beeld",
-"Datum_vervaardiging",
-"Deelcollectie",
-"ej","Eindjaar"
-"FNC_COUNT_SCANS",
-"fnc_digi_aanvragen",
-"FNC_DTM",
-"fnc_image_root",
-"fnc_nummerreeks",
-"fnc_pad_watermerk",
-"FNC_STRIP",
-"fnc_use_watermerk",
-"fnc_vrij_downloaden",
-"Formaat_binnen",
-"Formaat_buiten",
-"Geboortedatum",
-"Geboorteplaats",
-"Huisnummer",
-"id","ID in MF"
-"Jaar_openbaar",
-"moveup",
-"nb",
-"Notabene",
-"oai",
-"obr","Openbaar vanaf(?)"
-"Omvang",
-"Openbaarheid",
-"or","Orde"
-"ov","Omvang"
-"parent",
-"pe","Periode"
-"Plaats",
-"Rechtstitel",
-"Rol",
-"rt",
-"Soort_kaart",
-"Straat",
-"Techniek",
-"THTWD","Thema trefwoord"
-"Titel",
-"Toegangstitel",
-"TR","Trefwoord"
-"tr","Trefwoord"
-"Transfix",
-"Tussenvoegsel",
-"Uiterlijke_vorm",
-"Veld Code","Veld Omschrijving"
-"Vervaardigers",
-"vlgnr","Volgnummer"
-"Voornaam",
-"Wijk",
-"Zie_ook_verwijzing",
-"zo","Zie ook"
+bj,Beginjaar
+bn,Bestandsnaam
+CXTWD_PLAATSNAAM,Contexttoegang Trefwoord Plaatsnaam
+CXTWD_STRAATNAAM,Contexttoegang Trefwoord Straatnaam
+CXTWD_VERVAARDIGER,Contexttoegang Trefwoord Vervaardiger
+ej,Eindjaar
+id,RecordID van archiefeenheid
+ov,Omvang
+obr,Openbaar vanaf(?)
+or,Orde
+ahd_id,RecordID van bovenliggende archiefeenheid
+pe,Periode
+THTWD,Thema trefwoord
+CATTWD,Trefwoord
+TR,Trefwoord
+tr,Trefwoord
+vlgnr,Volgnummer
+zo,Zie ook
+Achternaam,Achternaam
+Auteur,Auteur
+Beroep,Beroep
+Beschrijving,Beschrijving
+code,Code
+Datering,Datering
+Datering_toegang,Datering_toegang
+Datum_beeld,Datum_beeld
+Datum_vervaardiging,Datum_vervaardiging
+Deelcollectie,Deelcollectie
+FNC_COUNT_SCANS,FNC_COUNT_SCANS
+fnc_digi_aanvragen,fnc_digi_aanvragen
+FNC_DTM,FNC_DTM
+fnc_image_root,fnc_image_root
+fnc_nummerreeks,fnc_nummerreeks
+fnc_pad_watermerk,fnc_pad_watermerk
+FNC_STRIP,FNC_STRIP
+fnc_use_watermerk,fnc_use_watermerk
+fnc_vrij_downloaden,fnc_vrij_downloaden
+Formaat_binnen,Formaat_binnen
+Formaat_buiten,Formaat_buiten
+Geboortedatum,Geboortedatum
+Geboorteplaats,Geboorteplaats
+Huisnummer,Huisnummer
+Jaar_openbaar,Jaar_openbaar
+moveup,moveup
+nb,nb
+Notabene,Notabene
+oai,oai
+Omvang,Omvang
+Openbaarheid,Openbaarheid
+parent,parent
+Plaats,Plaats
+Rechtstitel,Rechtstitel
+Rol,Rol
+rt,rt
+Soort_kaart,Soort_kaart
+Straat,Straat
+Techniek,Techniek
+Titel,Titel
+Toegangstitel,Toegangstitel
+Transfix,Transfix
+Tussenvoegsel,Tussenvoegsel
+Uiterlijke_vorm,Uiterlijke_vorm
+Vervaardigers,Vervaardigers
+Voornaam,Voornaam
+Wijk,Wijk
+Zie_ook_verwijzing,Zie_ook_verwijzing

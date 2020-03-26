@@ -1,0 +1,69 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX veld: <http://archief.io/veld#>
+
+veld:bj rdfs:label "Beginjaar" .
+veld:bn rdfs:label "Bestandsnaam" .
+veld:CXTWD_PLAATSNAAM rdfs:label "Contexttoegang Trefwoord Plaatsnaam" .
+veld:CXTWD_STRAATNAAM rdfs:label "Contexttoegang Trefwoord Straatnaam" .
+veld:CXTWD_VERVAARDIGER rdfs:label "Contexttoegang Trefwoord Vervaardiger" .
+veld:ej rdfs:label "Eindjaar" .
+veld:id rdfs:label "RecordID van archiefeenheid" .
+veld:ov rdfs:label "Omvang" .
+veld:obr rdfs:label "Openbaar vanaf(?)" .
+veld:or rdfs:label "Orde" .
+veld:ahd_id rdfs:label "RecordID van bovenliggende archiefeenheid" .
+veld:pe rdfs:label "Periode" .
+veld:THTWD rdfs:label "Thema trefwoord" .
+veld:CATTWD rdfs:label "Trefwoord" .
+veld:TR rdfs:label "Trefwoord" .
+veld:tr rdfs:label "Trefwoord" .
+veld:vlgnr rdfs:label "Volgnummer" .
+veld:zo rdfs:label "Zie ook" .
+veld:Achternaam rdfs:label "Achternaam" .
+veld:Auteur rdfs:label "Auteur" .
+veld:Beroep rdfs:label "Beroep" .
+veld:Beschrijving rdfs:label "Beschrijving" .
+veld:code rdfs:label "Code" .
+veld:Datering rdfs:label "Datering" .
+veld:Datering_toegang rdfs:label "Datering_toegang" .
+veld:Datum_beeld rdfs:label "Datum_beeld" .
+veld:Datum_vervaardiging rdfs:label "Datum_vervaardiging" .
+veld:Deelcollectie rdfs:label "Deelcollectie" .
+veld:FNC_COUNT_SCANS rdfs:label "FNC_COUNT_SCANS" .
+veld:fnc_digi_aanvragen rdfs:label "fnc_digi_aanvragen" .
+veld:FNC_DTM rdfs:label "FNC_DTM" .
+veld:fnc_image_root rdfs:label "fnc_image_root" .
+veld:fnc_nummerreeks rdfs:label "fnc_nummerreeks" .
+veld:fnc_pad_watermerk rdfs:label "fnc_pad_watermerk" .
+veld:FNC_STRIP rdfs:label "FNC_STRIP" .
+veld:fnc_use_watermerk rdfs:label "fnc_use_watermerk" .
+veld:fnc_vrij_downloaden rdfs:label "fnc_vrij_downloaden" .
+veld:Formaat_binnen rdfs:label "Formaat_binnen" .
+veld:Formaat_buiten rdfs:label "Formaat_buiten" .
+veld:Geboortedatum rdfs:label "Geboortedatum" .
+veld:Geboorteplaats rdfs:label "Geboorteplaats" .
+veld:Huisnummer rdfs:label "Huisnummer" .
+veld:Jaar_openbaar rdfs:label "Jaar_openbaar" .
+veld:moveup rdfs:label "moveup" .
+veld:nb rdfs:label "nb" .
+veld:Notabene rdfs:label "Notabene" .
+veld:oai rdfs:label "oai" .
+veld:Omvang rdfs:label "Omvang" .
+veld:Openbaarheid rdfs:label "Openbaarheid" .
+veld:parent rdfs:label "parent" .
+veld:Plaats rdfs:label "Plaats" .
+veld:Rechtstitel rdfs:label "Rechtstitel" .
+veld:Rol rdfs:label "Rol" .
+veld:rt rdfs:label "rt" .
+veld:Soort_kaart rdfs:label "Soort_kaart" .
+veld:Straat rdfs:label "Straat" .
+veld:Techniek rdfs:label "Techniek" .
+veld:Titel rdfs:label "Titel" .
+veld:Toegangstitel rdfs:label "Toegangstitel" .
+veld:Transfix rdfs:label "Transfix" .
+veld:Tussenvoegsel rdfs:label "Tussenvoegsel" .
+veld:Uiterlijke_vorm rdfs:label "Uiterlijke_vorm" .
+veld:Vervaardigers rdfs:label "Vervaardigers" .
+veld:Voornaam rdfs:label "Voornaam" .
+veld:Wijk rdfs:label "Wijk" .
+veld:Zie_ook_verwijzing rdfs:label "Zie_ook_verwijzing" .
