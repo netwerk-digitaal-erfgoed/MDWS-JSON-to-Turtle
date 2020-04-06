@@ -39,7 +39,7 @@ jsonParser.on('data', function (item) { //each object
     if (veld=="na") continue; //already present as rdfs:label
     if (veld=="aet") continue; //already present as rdf:type soort:...
     if (veld=="GUID") continue; //already present as part of the URI
-    writer.addQuad(subject, namedNode('v:'+veld.replace(/ /g,"_")), literal(item[veld]));
+    writer.addQuad(subject, namedNode('v:'+veld.replace(/ /g,"_").replace(/\//g,"_")), literal(item[veld]));
   }  
 });
 
