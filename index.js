@@ -14,9 +14,9 @@ const jsonParser = require('JSONStream').parse('*');
 const writer = new N3.Writer(process.stdout, { end: false, prefixes: { 
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
-  aio: 'http://archief.io/id/',
-  soort: 'http://archief.io/soort#',
-  v: 'http://archief.io/veld#'}
+  aio: 'https://archief.io/id/',
+  soort: 'https://archief.io/soort#',
+  v: 'https://archief.io/veld#'}
 });
 
 stream.pipe(jsonParser);
