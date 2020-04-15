@@ -11,7 +11,6 @@ if (!fs.existsSync(filename)) return console.log('File not found: ' + filename);
 
 const stream = fs.createReadStream(filename); //, {encoding: 'utf8'}),
 const jsonParser = require('JSONStream').parse('*');
-var prevItem;
 
 const writer = new N3.Writer(process.stdout, { end: false, prefixes: { 
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -33,10 +32,6 @@ jsonParser.on('data', function (item) { //each object
 
   // Structuur: https://docs.google.com/drawings/d/1IecmyErKqgqg2S9uEk3ThlvmN8DQ3lR3F_ztq_xsbM8/edit
   const subject = namedNode(`aio:${item.GUID}`);
-
-  if (prevItem && prevItem.parentItem == item.parentItem) {
-    writer.addQuad(subject, namedNode('rico:follows'), namedNode(`aio:${prevItem.GUID}`));
-  }
   
   //rico:recordResourceExtent
 
@@ -44,7 +39,9 @@ jsonParser.on('data', function (item) { //each object
     if (!item[veld]) continue; //value undefined or empty
     else if (veld=="GUID") continue; //already present as part of the URI
     else if (veld=="parentItem") writer.addQuad(subject, namedNode('rico:includedIn'), namedNode(`aio:${item.parentItem}`));
-    
+    else if (veld=="previousItem") writer.addQuad(subject, namedNode('rico:follows'), namedNode(`aio:${item.previousItem}`));
+    else if (veld=="aet") writer.addQuad(subject, namedNode('v:aet'), namedNode(`soort:${item.aet}`));
+
     //else if (item.aet=="abk" && veld=="ov") continue; 
     else if (veld=="na") writer.addQuad(subject, namedNode('rico:title'), literal(item[veld]));
     else if (veld=="pe") writer.addQuad(subject, namedNode('rico:date'), literal(item[veld])); //titel in Mais Flexis: "Datering". in uitvoer: "pe" (periode ?)
@@ -56,7 +53,6 @@ jsonParser.on('data', function (item) { //each object
     else writer.addQuad(subject, namedNode('v:'+veld.replace(/ /g,"_").replace(/\//g,"_")), literal(item[veld]));
   }
  
-  prevItem = item;
 });
 
 jsonParser.on('end', function() { //end of file
