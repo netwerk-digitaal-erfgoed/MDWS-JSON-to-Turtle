@@ -1,0 +1,16 @@
+ID,CODE,OMSCHRIJVING,TOELICHTING
+1,TWD,Trefwoorden,
+2,NIW,Namen,
+3,GN,Geografische namen,
+12,MATST,Materiaalsoorten,
+10,THTWD,Thematrefwoorden,
+40,TGRP,Groepen,
+7,THM,Thema tbv groeperingen,
+50,OAI,OAI-PMH set,Hiermee kan worden aangegeven dat de toegang of beschrijving op archieven.nl kan worden geharvest via OAI-PMH en in welke 'set' deze hoort
+23,BIBTW,Bibliotheektrefwoord,
+53,BIBNM,Bibliotheek Namen,
+54,BIBGE,Bibliotheek geografisch,
+110,GAU,GAU trefwoorden,
+107,THWTW,Trefwoorden THA,
+55,LBTWD,Locatietrefwoord Beeld,
+51,HPSN,Historische personen,
