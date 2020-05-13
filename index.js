@@ -37,23 +37,29 @@ jsonParser.on('data', function (item) { //each object
 
   for (const veld in item) {
     if (!item[veld]) continue; //value undefined or empty
-    else if (veld=="GUID") continue; //already present as part of the URI
-    else if (veld=="parentItem") writer.addQuad(subject, namedNode('rico:includedIn'), namedNode(`aio:${item.parentItem}`));
-    else if (veld=="previousItem") writer.addQuad(subject, namedNode('rico:follows'), namedNode(`aio:${item.previousItem}`));
-    else if (veld=="aet") writer.addQuad(subject, namedNode('v:aet'), namedNode(`soort:${item.aet}`));
 
-    //else if (item.aet=="abk" && veld=="ov") continue; 
-    else if (veld=="na") writer.addQuad(subject, namedNode('rico:title'), literal(item[veld]));
-    else if (veld=="pe") writer.addQuad(subject, namedNode('rico:date'), literal(item[veld])); //titel in Mais Flexis: "Datering". in uitvoer: "pe" (periode ?)
-    else if (veld=="code") writer.addQuad(subject, namedNode('rico:identifier'), literal(item[veld]));
-    else if (veld=="ov") writer.addQuad(subject, namedNode('rico:recordResourceExtent'), literal(item["ov"])); //instantiationExtent
+    //handle both arrays and single values
+    const values = (typeof(item[veld])=="object") ? item[veld] : [item[veld]];
+
+    for (const value of values) {
+      if (veld=="GUID") continue; //already present as part of the URI
+      else if (veld=="parentItem") writer.addQuad(subject, namedNode('rico:includedIn'), namedNode(`aio:${item.parentItem}`));
+      else if (veld=="previousItem") writer.addQuad(subject, namedNode('rico:follows'), namedNode(`aio:${item.previousItem}`));
+      else if (veld=="aet") writer.addQuad(subject, namedNode('v:aet'), namedNode(`soort:${item.aet}`));
+
+      //else if (item.aet=="abk" && veld=="ov") continue; 
+      else if (veld=="na") writer.addQuad(subject, namedNode('rico:title'), literal(value));
+      else if (veld=="pe") writer.addQuad(subject, namedNode('rico:date'), literal(value)); //titel in Mais Flexis: "Datering". in uitvoer: "pe" (periode ?)
+      else if (veld=="code") writer.addQuad(subject, namedNode('rico:identifier'), literal(value));
+      else if (veld=="ov") writer.addQuad(subject, namedNode('rico:recordResourceExtent'), literal(item["ov"])); //instantiationExtent
     
-    //TODO Instantiaten. (maar is dat niet te veel intepretatie?)
-    
-    else writer.addQuad(subject, namedNode('v:'+veld.replace(/ /g,"_").replace(/\//g,"_")), literal(item[veld]));
+      //default
+      else writer.addQuad(subject, namedNode('v:'+veld.replace(/ /g,"_").replace(/\//g,"_")), literal(value));
+    }
   }
- 
 });
+
+
 
 jsonParser.on('end', function() { //end of file
   writer.end();
