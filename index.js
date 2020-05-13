@@ -26,7 +26,7 @@ const writer = new N3.Writer(process.stdout, { end: false, prefixes: {
 stream.pipe(jsonParser);
 
 jsonParser.on('data', function (item) { //each object
-
+  if (typeof(item)!="object") { console.error("Error: Array expected as root of JSON file"); process.exit(1); };
   if (!item.GUID) return console.error("Error: Skip item: GUID undefined",item.id || item);
   if (!item.aet) console.warn("Warning: AET undefined",item.id || item);
 
