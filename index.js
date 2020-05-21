@@ -58,7 +58,7 @@ jsonParser.on('data', function (item) { //each object
       else if (veld=="ov") writer.addQuad(subject, namedNode('rico:recordResourceExtent'), literal(item["ov"])); //instantiationExtent
     
       //default
-      else writer.addQuad(subject, namedNode('v:'+veld.replace(/ /g,"_").replace(/\//g,"_")), literal(value));
+      else writer.addQuad(subject, namedNode('v:'+veld.replace(/[ \/#]/g,"_")), literal(value));
     }
   }
 });
