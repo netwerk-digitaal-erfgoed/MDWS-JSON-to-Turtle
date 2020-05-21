@@ -2,3 +2,5 @@ node_modules/
 .DS_Store
 package-lock.json
 result.json
+tmp.log
+tmp.ttl

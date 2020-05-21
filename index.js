@@ -15,6 +15,7 @@ const jsonParser = require('JSONStream').parse('*');
 const writer = new N3.Writer(process.stdout, { end: false, prefixes: { 
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
+  dct: 'http://purl.org/dc/terms/',
   aio: 'https://archief.io/id/',
   soort: 'https://archief.io/soort#',
   v: 'https://archief.io/veld#',
@@ -42,7 +43,10 @@ jsonParser.on('data', function (item) { //each object
     const values = (typeof(item[veld])=="object") ? item[veld] : [item[veld]];
 
     for (const value of values) {
-      if (veld=="GUID") continue; //already present as part of the URI
+
+      if (veld=="relaties") writer.addQuad(subject, namedNode('dct:relation'), namedNode(`aio:${value.rel_adt_id}/${value.ahd_id_rel}`));
+
+      else if (veld=="GUID") continue; //already present as part of the URI
       else if (veld=="parentItem") writer.addQuad(subject, namedNode('rico:includedIn'), namedNode(`aio:${item.parentItem}`));
       else if (veld=="previousItem") writer.addQuad(subject, namedNode('rico:follows'), namedNode(`aio:${item.previousItem}`));
       else if (veld=="aet") writer.addQuad(subject, namedNode('v:aet'), namedNode(`soort:${item.aet}`));
