@@ -46,7 +46,13 @@ jsonParser.on('data', function (item) { //each object
 
     for (const value of values) {
 
-      if (veld=="relaties") writer.addQuad(subject, namedNode('dct:relation'), namedNode(`${aiobase}id/${value.rel_adt_id}/${value.ahd_id_rel}`));
+      if (veld=="relaties") {
+        if (value.rel_stuk_aet_code!="PAP") { //relatie naar fysieke stukken niet relevant)
+          // console.warn(value);
+          const rel_aet = (value.rel_stuk_aet_code || value.rel_top_aet_code).toLowerCase();
+          writer.addQuad(subject, namedNode('dct:relation'), namedNode(`${aiobase}id/${value.rel_adt_id}/${rel_aet}/${value.ahd_id_rel}`));
+        }
+      }
 
       else if (veld=="GUID") continue; //already present as part of the URI
       else if (veld=="parentItem") writer.addQuad(subject, namedNode('rico:includedIn'), namedNode(`aio:${item.parentItem}`));
