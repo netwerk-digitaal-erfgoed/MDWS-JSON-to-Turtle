@@ -14,6 +14,8 @@ const jsonParser = require('JSONStream').parse('*');
 
 const aiobase = 'https://archief.io/';
 
+let labels = {};
+
 // const adt_id = '39'
 // to uri-fi id's and ahd_id's we need to bring in adt_id to distinguish
 // records with equal id's between different archives.
@@ -95,8 +97,13 @@ jsonParser.on('data', function (item) { //each object
       else if (uriFields.indexOf(veld)>-1) {
         //Make safe URI field and value
         //Google Sheets formula: // REGEXREPLACE(REGEXREPLACE(REGEXREPLACE((REGEXREPLACE(B92, "[|, ""$/']", "-")), "[().]", "") ,"--","-"),"--","-")
+        //NB: punten mogen niet, worden nu verwijderd. 
         let uri = value.replace(/[:;|,<>=& "$/']/g, "-").replace(/[().]/g, "").replace(/--/g,"-").replace(/--/g,"-");
         writer.addQuad(subject, namedNode('v:'+veld),namedNode(veld+":"+uri));
+
+        //create rdfs label for uri-fied value
+        labels[veld+":"+uri] = value;
+        // writer.addQuad(namedNode(veld+":"+uri), namedNode("rdfs:label"), value);
       }
 
       else if (veld=="GUID") continue; //already present as part of the URI
@@ -122,6 +129,17 @@ jsonParser.on('data', function (item) { //each object
 
 
 jsonParser.on('end', function() { //end of file
+  // console.warn(labels)
+  let label_arr = [];
+  for (var key in labels) {
+    label_arr.push({key:key, value:labels[key]});
+  }
+  label_arr = label_arr.sort(function (a, b) {
+    return a.key.localeCompare( b.key );
+  })
+  for (var obj of label_arr) {
+    writer.addQuad(namedNode(obj.key), namedNode("rdfs:label"), literal(obj.value));
+  }
   writer.end();
 });
 
